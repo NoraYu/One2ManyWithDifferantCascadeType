@@ -9,15 +9,18 @@ public class Book {
     private long id;
     @Column
     private String name;
+    //双方都非联级删除
 //    @ManyToOne(fetch = FetchType.EAGER,cascade={CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
 //            CascadeType.REFRESH})
-    //上面是双方都非联级删除
+
 
     //下面的是多的一段不联级删除一。
-    @ManyToOne(fetch = FetchType.EAGER,cascade={CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
+    @ManyToOne(cascade={CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
             CascadeType.REFRESH})
     @JoinColumn(name = "authot_id")
     private Author author;
+
+    //单向的话完全不用有author出现
 
     public Book() {
 

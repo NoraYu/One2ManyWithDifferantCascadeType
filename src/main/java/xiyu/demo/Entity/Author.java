@@ -12,13 +12,17 @@ public class Author {
     @Column
     private String name;
 
-
+    //非联级删除
 //    @OneToMany(mappedBy = "author",cascade={CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
 //            CascadeType.REFRESH})
-//上面是非联级删除
+
 
     //下面的是一的一段联级删除多
     @OneToMany(mappedBy = "author",cascade=CascadeType.ALL, orphanRemoval = true)
+
+    //不使用mappedby 单向
+//    @OneToMany( cascade=CascadeType.ALL)
+//    @JoinColumn(name = "authot_id")
     private Set<Book> books=new HashSet<>();
 
     public Author() {

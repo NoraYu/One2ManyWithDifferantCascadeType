@@ -22,7 +22,7 @@ public class HomeController {
     @Autowired
     AuthorRepository authorRepository;
 
-    @GetMapping("/")
+    @RequestMapping("/")
     public String index(){
         Author author1= new Author("Neil Gaiman");
         Author author2= new Author("J.K.Rowling");
@@ -33,7 +33,7 @@ public class HomeController {
         Book book3= new Book("Harry Potter");
         book3.setAuthor(author2);
         //authorRepository.save(author2);
-       // authorRepository.save(author1);
+        //authorRepository.save(author1);
         bookRepository.save(book1);
         bookRepository.save(book2);
         bookRepository.save(book3);
@@ -41,7 +41,7 @@ public class HomeController {
         return "index";
     }
 
-    @GetMapping("/2")
+    @RequestMapping("/2")
     public String index2(){
         Author author1= new Author("Kathy Sierra");
         Author author2= new Author("Joshua Bloch");
@@ -72,7 +72,7 @@ public class HomeController {
 
         bookRepository.delete(book1);
         System.out.println("book2 should be deleted");
-        return "index";
+        return "delete";
     }
 
     @RequestMapping("/a")
@@ -86,6 +86,6 @@ public class HomeController {
 //        author1.setBooks(null);
         authorRepository.delete(author1);
         System.out.println("author1 should be deleted");
-        return "index";
+        return "delete";
     }
 }
